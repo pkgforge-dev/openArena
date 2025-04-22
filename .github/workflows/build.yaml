@@ -1,0 +1,56 @@
+name: Create and release AppBundle & Appimage
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  schedule:
+    - cron: "0 10 * * 0"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Build Quake3e and prepare AppBundles"
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+      options: "--privileged"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+        - name: Install dependencies
+          run: |
+            apk add --no-cache sdl2-dev mesa-dev git  \
+                               libxrandr-dev alsa-lib \
+                               curl-dev build-base
+
+        - name: Clone & Build Quake3e
+          run: |
+            git clone --depth=1 https://github.com/ec-/Quake3e
+            cd ./Quake3e
+            export CFLAGS="-O2 -static"
+            make -j$(nproc) -l$(nproc) \
+                 USE_CURL_DLOPEN=0  USE_RENDERER_DLOPEN=0   \
+            	   USE_CODEC_VORBIS=1 USE_VOIP=1              \
+            	   USE_CODEC_OPUS=1   USE_OPENAL=1            \
+            	   USE_MUMBLE=1       USE_FREETYPE=1          \
+            	   USE_OPENGL=1       USE_OPENGL2=1           \
+            	   USE_VULKAN=1       RENDERER_DEFAULT=vulkan \
+            	   USE_CURL=1                                 \
+            	   SDL_VIDEODRIVER=wayland                    \
+                 DEFAULT_BASEDIR=/app
+
+            DATE="$(date +%d_%m_%Y)"
+            NAME="quake3e"
+            MAINTAINER="xplshn"
+
+	          APPBUNDLE_ID="$NAME-$DATE-$MAINTAINER"
+
+            mkdir "$APPBUNDLE_ID.AppDir"
+            wget -qO- "https://raw.githubusercontent.com/xplshn/dbin/master/stubdl" | sh -s -- run \
+            sharun l --dst-dir "$APPBUNDLE_ID.AppDir" -g -w -s "./build/release-linux-$(uname -m)"/quake3e.*
+            mkdir /tmp/baloney
+            wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip - -d /tmp/baloney
+            ls /tmp/baloney
