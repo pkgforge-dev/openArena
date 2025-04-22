@@ -79,7 +79,7 @@ jobs:
       - name: OpenArena + Engine
         run: |
           cd "$GITHUB_WORKSPACE"
-          NAME="quake3e-openarena"
+          NAME="openarena-quake3e"
           DATE="$(date +%d%m%Y)"
           MAINTAINER="xplshn"
           APPBUNDLE_ID="${NAME}-${DATE}-${MAINTAINER}"
