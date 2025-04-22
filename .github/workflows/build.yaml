@@ -50,7 +50,7 @@ jobs:
                   APPBUNDLE_ID="$NAME-$DATE-$MAINTAINER"
 
                   mkdir "$APPBUNDLE_ID.AppDir"
-                  curl -qO ./sharun "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio" && chmod +x ./sharun
+                  wget -qO ./sharun "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio" && chmod +x ./sharun
                   sharun l --dst-dir "$APPBUNDLE_ID.AppDir" -g -w -s "./build/release-linux-$(uname -m)"/quake3e.*
                   mkdir /tmp/baloney
                   wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip - -d /tmp/baloney
