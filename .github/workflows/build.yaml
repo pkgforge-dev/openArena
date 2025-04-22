@@ -56,5 +56,5 @@ jobs:
                   ldd ./sharun
                   ./sharun l --dst-dir "$APPBUNDLE_ID.AppDir" -g -w -s "./build/release-linux-$(uname -m)"/quake3e.*
                   mkdir /tmp/baloney
-                  wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip - -d /tmp/baloney
+                  wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/baloney
                   ls /tmp/baloney
