@@ -55,8 +55,8 @@ jobs:
                   ./sharun l --dst-dir "$APPBUNDLE_ID.AppDir" -g -w -s "./build/release-linux-$(uname -m)"/quake3e.*
                   mkdir /tmp/baloney
                   wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/baloney
-                  mv /tmp/openarena-0.8.8/missionpack \
-                     /tmp/openarena-0.8.8/baseoa      \
+                  mv /tmp/baloney/openarena-0.8.8/missionpack \
+                     /tmp/baloney/openarena-0.8.8/baseoa      \
                      "$APPBUNDLE_ID.AppDir/usr/share"
                   cat <<'EOF' >"$APPBUNDLE_ID.AppDir/AppRun"
                   #!/bin/sh
