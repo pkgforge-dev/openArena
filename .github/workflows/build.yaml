@@ -15,6 +15,8 @@ jobs:
     container:
       image: alpine:latest
       options: "--privileged"
+    outputs:
+      release_tag: ${{ steps.set_tag.outputs.tag }}
 
     steps:
       - name: Checkout repository
@@ -43,6 +45,12 @@ jobs:
                USE_CURL=1                                 \
                SDL_VIDEODRIVER=wayland                    \
                DEFAULT_BASEDIR=/app/usr/share
+
+      - name: Set release tag
+        id: set_tag
+        run: |
+          DATE="$(date +%Y%m%d)"
+          echo "tag=q3e-release-${DATE}" >> $GITHUB_OUTPUT
 
       - name: Engine Only
         run: |
@@ -91,3 +99,33 @@ jobs:
 
       - name: List AppBundles
         run: ls -lh *.AppBundle
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: appbundles
+          path: "*.AppBundle"
+          retention-days: 1
+
+  release:
+    name: "Create GitHub Release"
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: appbundles
+          
+      - name: Create Release
+        uses: softprops/action-gh-release@v2.2.1
+        with:
+          name: "Build ${{ needs.build.outputs.release_tag || github.run_number }}"
+          tag_name: "${{ needs.build.outputs.release_tag || github.run_number }}"
+          prerelease: false
+          draft: false
+          generate_release_notes: false
+          make_latest: true
+          files: |
+            *.AppBundle
