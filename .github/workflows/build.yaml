@@ -41,7 +41,7 @@ jobs:
                        USE_VULKAN=1       RENDERER_DEFAULT=vulkan \
                        USE_CURL=1                                 \
                        SDL_VIDEODRIVER=wayland                    \
-                       DEFAULT_BASEDIR=/app
+                       DEFAULT_BASEDIR=/app/usr/share
 
                   DATE="$(date +%d_%m_%Y)"
                   NAME="quake3e"
@@ -49,7 +49,7 @@ jobs:
 
                   APPBUNDLE_ID="$NAME-$DATE-$MAINTAINER"
 
-                  mkdir "$APPBUNDLE_ID.AppDir"
+                  mkdir -p "${APPBUNDLE_ID}.AppDir/usr/share"
                   wget -qO ./sharun "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio"
                   ls -FAlsh
                   chmod +x ./sharun
@@ -57,4 +57,4 @@ jobs:
                   ./sharun l --dst-dir "$APPBUNDLE_ID.AppDir" -g -w -s "./build/release-linux-$(uname -m)"/quake3e.*
                   mkdir /tmp/baloney
                   wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/baloney
-                  ls /tmp/baloney
+                  mv /tmp/openarena-0.8.8/baseoa /tmp/openarena-0.8.8/missionpack "$APPBUNDLE_ID.AppDir/usr/share"
