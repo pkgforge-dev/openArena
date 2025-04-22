@@ -40,13 +40,13 @@ jobs:
             	   USE_VULKAN=1       RENDERER_DEFAULT=vulkan \
             	   USE_CURL=1                                 \
             	   SDL_VIDEODRIVER=wayland                    \
-                 DEFAULT_BASEDIR=/app
+                   DEFAULT_BASEDIR=/app
 
             DATE="$(date +%d_%m_%Y)"
             NAME="quake3e"
             MAINTAINER="xplshn"
 
-	          APPBUNDLE_ID="$NAME-$DATE-$MAINTAINER"
+	    APPBUNDLE_ID="$NAME-$DATE-$MAINTAINER"
 
             mkdir "$APPBUNDLE_ID.AppDir"
             wget -qO- "https://raw.githubusercontent.com/xplshn/dbin/master/stubdl" | sh -s -- run \
