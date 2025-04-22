@@ -85,7 +85,7 @@ jobs:
           APPBUNDLE_ID="${NAME}-${DATE}-${MAINTAINER}"
 
           mkdir -p /tmp/oazip
-          wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/oazip >/dev/null
+          wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/oazip && ls -Fshl /tmp/oazip
           mv /tmp/oazip/openarena-0.8.8/baseoa /tmp/oazip/openarena-0.8.8/missionpack "${APPBUNDLE_ID}.AppDir/usr/share/"
 
           echo '#!/bin/sh' > "${APPBUNDLE_ID}.AppDir/AppRun"
