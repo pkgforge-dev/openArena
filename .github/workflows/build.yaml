@@ -83,7 +83,7 @@ jobs:
           ./sharun l --dst-dir "${APPBUNDLE_ID}.AppDir" -g -w -s ./Quake3e/build/release-linux-$(uname -m)/quake3e.*
 
           mkdir -p /tmp/oazip
-          wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip -d /tmp/oazip - >/dev/null
+          wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/oazip >/dev/null
           mv /tmp/oazip/openarena-0.8.8/baseoa /tmp/oazip/openarena-0.8.8/missionpack "${APPBUNDLE_ID}.AppDir/usr/share/"
 
           echo '#!/bin/sh' > "${APPBUNDLE_ID}.AppDir/AppRun"
