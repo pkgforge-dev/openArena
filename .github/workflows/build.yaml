@@ -72,3 +72,5 @@ jobs:
                   ./pelf --add-appdir "$APPBUNDLE_ID.AppDir" \
                          --output-to "$APPBUNDLE_ID.dwfs.AppBundle" \
                          --appbundle-id "$APPBUNDLE_ID"
+
+                  ls -FAlsh
