@@ -24,7 +24,8 @@ jobs:
               run: |
                   apk add --no-cache sdl2-dev mesa-dev git \
                            libxrandr-dev alsa-lib \
-                           curl-dev build-base
+                           curl curl-dev \
+                           build-base
 
             - name: Clone & Build Quake3e
               run: |
