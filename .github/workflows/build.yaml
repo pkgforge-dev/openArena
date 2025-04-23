@@ -1,4 +1,4 @@
-name: Create and release AppBundle & AppImage
+name: Create and release AppBundle
 concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
