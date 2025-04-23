@@ -1,4 +1,4 @@
-# OpenARENA
+# OpenArena
 
 **ID:** io.github.ec_.Quake3e.OpenArena
 
@@ -20,7 +20,7 @@ OpenArena is a free and open source first-person shooter game based heavily on t
 
 OpenArena's style of play is very fast and requires skill to be played successfully online. Gameplay modes include Deathmatch, Team Deathmatch, Tournament, Capture the Flag, Elimination, CTF Elimination, Last Man Standing and Double Domination.
 
-This version of OpenArena is based on the Quake3e engine. I do not take credit for the work done by the OpenArena team nor Eugene, who develops the Quake3e engine.
+This version of OpenArena is based on the Quake3e engine. I do not take credit for the work done by the OpenArena team nor Eugene, who develops the Quake3e engine used by this AppBundle.
 
 The OAX patch has been applied, which adds support for more screen resolutions and makes the game playable in modern systems. It also includes bugfixes and improvements. Connections to unpatched servers do work and present no issues.
 
