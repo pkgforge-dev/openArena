@@ -81,7 +81,8 @@ jobs:
           chmod +x ./pelf
           ./pelf --add-appdir "${APPBUNDLE_ID}.AppDir" \
                  --output-to "${NAME}.dwfs.AppBundle" \
-                 --appbundle-id "${APPBUNDLE_ID}"
+                 --appbundle-id "${APPBUNDLE_ID}" \
+                 --run-behavior 3
 
       - name: OpenArena + Engine
         run: |
