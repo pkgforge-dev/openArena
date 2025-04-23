@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.ec_.Quake3e</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <developer_name>Eugene, xplshn and contributors</developer_name>
+  <provides>
+    <id>quake3e.desktop</id>
+  </provides>
+  <name>Quake3e (engine)</name>
+  <summary>Quake 3 Enhanced engine</summary>
+  <launchable type="desktop-id">io.github.ec_.Quake3e.OpenArena.desktop</launchable>
+  <description>
+    <p>
+      This is a modern Quake III Arena engine aimed to be fast, secure and compatible with all existing Q3A mods.
+      It is based on last non-SDL source dump of ioquake3 with latest upstream fixes applied.
+    </p>
+    <p>
+      Key features:
+      <ul>
+        <li>Optimized OpenGL renderer</li>
+        <li>Optimized Vulkan renderer</li>
+        <li>Raw mouse input support, enabled automatically instead of DirectInput(\in_mouse 1) if available</li>
+        <li>Unlagged mouse events processing, can be reverted by setting \in_lagged 1</li>
+        <li>\in_minimize - hotkey for minimize/restore main window (win32-only, direct replacement for Q3Minimizer)</li>
+        <li>\video-pipe - to use external ffmpeg binary as an encoder for better quality and smaller output files</li>
+        <li>Significantly reworked QVM (Quake Virtual Machine)</li>
+        <li>Improved server-side DoS protection, much reduced memory usage</li>
+        <li>Raised filesystem limits (up to 20,000 maps can be handled in a single directory)</li>
+        <li>Reworked Zone memory allocator, no more out-of-memory errors</li>
+        <li>Non-intrusive support for SDL2 backend (video, audio, input), selectable at compile time</li>
+        <li>Tons of bug fixes and other improvements</li>
+        <li>Vulkan renderer based on Quake-III-Arena-Kenny-Edition with many additions:</li>
+        <ul>
+          <li>High-quality per-pixel dynamic lighting</li>
+          <li>Very fast flares (\r_flares 1)</li>
+          <li>Anisotropic filtering (\r_ext_texture_filter_anisotropic)</li>
+          <li>Greatly reduced API overhead (call/dispatch ratio)</li>
+          <li>Flexible vertex buffer memory management to allow loading huge maps</li>
+          <li>Multiple command buffers to reduce processing bottlenecks</li>
+          <li>Reversed depth buffer to eliminate z-fighting on big maps</li>
+          <li>Merged lightmaps (atlases)</li>
+          <li>Multitexturing optimizations</li>
+          <li>Static world surfaces cached in VBO (\r_vbo 1)</li>
+          <li>Useful debug markers for tools like RenderDoc</li>
+          <li>Fixed framebuffer corruption on some Intel iGPUs</li>
+          <li>Offscreen rendering, enabled with \r_fbo 1, all following requires it enabled:</li>
+          <ul>
+            <li>ScreenMap texture rendering - to create realistic environment reflections</li>
+            <li>Multisample anti-aliasing (\r_ext_multisample)</li>
+            <li>Supersample anti-aliasing (\r_ext_supersample)</li>
+            <li>Per-window gamma-correction which is important for screen-capture tools like OBS</li>
+            <li>You can minimize game window any time during \video|\video-pipe recording</li>
+            <li>High dynamic range render targets (\r_hdr 1) to avoid color banding</li>
+            <li>Bloom post-processing effect</li>
+            <li>Arbitrary resolution rendering</li>
+            <li>Greyscale mode</li>
+          </ul>
+        </ul>
+      </ul>
+    </p>
+  </description>
+  <url type="homepage">https://github.com/ec-/Quake3e</url>
+</component>

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Quake3e
+Comment=Quake3e engine
+Icon=io.github.ec_.Quake3e
+Exec=quake3e
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;
+Keywords=arena;quake;q3a;
