@@ -88,7 +88,7 @@ jobs:
           MAINTAINER="xplshn"
           APPBUNDLE_ID="${NAME}-${{ env.DATE }}-${MAINTAINER}"
 
-          mv "${{ env.APPBUNDLE_ID }}" "$APPBUNDLE_ID"
+          mv "${{ env.APPBUNDLE_ID }}.AppDir" "${APPBUNDLE_ID}.AppDir"
 
           mkdir -p /tmp/oazip "${APPBUNDLE_ID}.AppDir/usr/share/"
           wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/oazip
