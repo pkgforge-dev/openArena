@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+f<?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2014 Richard Hughes <richard@hughsie.com> -->
 <component type="desktop-application">
   <id>io.github.ec_.Quake3e.OpenArena</id>
@@ -31,7 +31,6 @@
       I do not take credit for the work done by the OpenArena team nor Eugene, who develops the Quake3e engine used by this AppBundle.
     </p>
     <p>
-      A configuration file is also available, which lets you modify CVARS however you want.
       The OAX patch has been applied, which adds support for more screen resolutions and makes the game playable in modern systems.
       It also includes bugfixes and improvements. Connections to unpatched servers do work and present no issues.
     </p>
