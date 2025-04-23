@@ -68,7 +68,7 @@ jobs:
           ./sharun l --dst-dir "${APPBUNDLE_ID}.AppDir" -g -w -s ./Quake3e/build/release-linux-$(uname -m)/quake3e.*
 
           echo '#!/bin/sh' > "${APPBUNDLE_ID}.AppDir/AppRun"
-          echo 'APPDIR="${APPDIR:-$(dirname "$(readlink -f "$0")")}"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
+          echo 'APPDIR="$(dirname "$(readlink -f "$0")")"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
           echo '"$APPDIR/bin/quake3e.x64" $@' >> "${APPBUNDLE_ID}.AppDir/AppRun"
           chmod +x "${APPBUNDLE_ID}.AppDir/AppRun"
 
