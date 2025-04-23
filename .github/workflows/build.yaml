@@ -44,7 +44,7 @@ jobs:
                USE_VULKAN=1       RENDERER_DEFAULT=vulkan \
                USE_CURL=1                                 \
                SDL_VIDEODRIVER=wayland                    \
-               DEFAULT_BASEDIR=/app/usr/share
+               DEFAULT_BASEDIR="."
           echo "DATE=$(date +%d_%m_%Y)" >> $GITHUB_ENV
 
       - name: Set release tag
@@ -98,7 +98,7 @@ jobs:
           mv /tmp/oazip/openarena-0.8.8/missionpack \
              /tmp/oazip/openarena-0.8.8/baseoa \
              /tmp/oazip/oax \
-             "${APPBUNDLE_ID}.AppDir/usr/share/"
+             "${APPBUNDLE_ID}.AppDir/"
 
           echo '#!/bin/sh' > "${APPBUNDLE_ID}.AppDir/AppRun"
           echo 'APPDIR="${APPDIR:-$(dirname "$(readlink -f "$0")")}"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
