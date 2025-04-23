@@ -103,7 +103,7 @@ jobs:
           echo '"$APPDIR/bin/quake3e.x64" ${OA_CVARS} "$@"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
           chmod +x "${APPBUNDLE_ID}.AppDir/AppRun"
 
-          rm "${APPBUNDLE_ID}.AppDir/io.github.ec_.Quake3e*"
+          rm ${APPBUNDLE_ID}.AppDir/io.github.ec_.Quake3e*
           cp ./io.github.ec_.Quake3e.OpenArena.png "${APPBUNDLE_ID}.AppDir/.DirIcon"
           cp ./io.github.ec_.Quake3e.OpenArena.appdata.xml \
              ./io.github.ec_.Quake3e.OpenArena.desktop \
