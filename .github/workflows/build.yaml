@@ -46,6 +46,7 @@ jobs:
                SDL_VIDEODRIVER=wayland                    \
                DEFAULT_BASEDIR=/app/usr/share
           echo "DATE=$(date +%d_%m_%Y)" >> $GITHUB_ENV
+
       - name: Set release tag
         id: set_tag
         run: |
@@ -67,7 +68,8 @@ jobs:
           ./sharun l --dst-dir "${APPBUNDLE_ID}.AppDir" -g -w -s ./Quake3e/build/release-linux-$(uname -m)/quake3e.*
 
           echo '#!/bin/sh' > "${APPBUNDLE_ID}.AppDir/AppRun"
-          echo '"$APPDIR/bin/quake3e.x64" "$@"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
+          echo 'APPDIR="${APPDIR:-$(dirname "$(readlink -f "$0")")}"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
+          echo '"$APPDIR/bin/quake3e.x64" $@' >> "${APPBUNDLE_ID}.AppDir/AppRun"
           chmod +x "${APPBUNDLE_ID}.AppDir/AppRun"
 
           cp ./io.github.ec_.Quake3e.png "${APPBUNDLE_ID}.AppDir/.DirIcon"
@@ -99,8 +101,9 @@ jobs:
              "${APPBUNDLE_ID}.AppDir/usr/share/"
 
           echo '#!/bin/sh' > "${APPBUNDLE_ID}.AppDir/AppRun"
-          echo 'OA_CVARS="+set fs_game oax +set fs_basegame baseoa +set protocol 71 +set con_title OpenArena +set cl_title OpenArena"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
-          echo '"$APPDIR/bin/quake3e.x64" ${OA_CVARS} "$@"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
+          echo 'APPDIR="${APPDIR:-$(dirname "$(readlink -f "$0")")}"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
+          echo 'OA_CVARS="${OA_CVARS:=+set fs_game oax +set fs_basegame baseoa +set protocol 71 +set con_title OpenArena +set cl_title OpenArena}"' >> "${APPBUNDLE_ID}.AppDir/AppRun"
+          echo '"$APPDIR/bin/quake3e.x64" ${OA_CVARS} $@' >> "${APPBUNDLE_ID}.AppDir/AppRun"
           chmod +x "${APPBUNDLE_ID}.AppDir/AppRun"
 
           rm ${APPBUNDLE_ID}.AppDir/io.github.ec_.Quake3e*
@@ -127,13 +130,13 @@ jobs:
     name: "Create GitHub Release"
     needs: build
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           name: appbundles
-          
+
       - name: Create Release
         uses: softprops/action-gh-release@v2.2.2
         with:
