@@ -114,7 +114,8 @@ jobs:
 
           ./pelf --add-appdir "${APPBUNDLE_ID}.AppDir" \
                  --output-to "${APPBUNDLE_ID}.dwfs.AppBundle" \
-                 --appbundle-id "${APPBUNDLE_ID}"
+                 --appbundle-id "${APPBUNDLE_ID}" \
+                 --run-behavior 2
 
       - name: List AppBundles
         run: ls -lh *.AppBundle
