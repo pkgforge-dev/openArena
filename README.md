@@ -1,5 +1,9 @@
 # OpenArena
 
+<p align="center">
+	<img src=".DirIcon" width="350" alt="OpenArena logo"/>
+</p>
+
 **ID:** io.github.ec_.Quake3e.OpenArena
 
 **Metadata License:** CC0-1.0
