@@ -45,7 +45,7 @@ jobs:
                USE_CURL=1                                 \
                SDL_VIDEODRIVER=wayland                    \
                DEFAULT_BASEDIR=/app/usr/share
-          echo "$(date +%d_%m_%Y)" >> $GITHUB_ENV
+          echo "DATE=$(date +%d_%m_%Y)" >> $GITHUB_ENV
       - name: Set release tag
         id: set_tag
         run: |
@@ -58,6 +58,8 @@ jobs:
           NAME="quake3e"
           MAINTAINER="xplshn"
           APPBUNDLE_ID="${NAME}-${{ env.DATE }}-${MAINTAINER}"
+
+          echo "APPBUNDLE_ID=$APPBUNDLE_ID" >> $GITHUB_ENV
 
           mkdir -p "${APPBUNDLE_ID}.AppDir/usr/share"
           wget -qO ./sharun "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio"
@@ -85,6 +87,8 @@ jobs:
           NAME="openarena-quake3e"
           MAINTAINER="xplshn"
           APPBUNDLE_ID="${NAME}-${{ env.DATE }}-${MAINTAINER}"
+
+          mv "${{ env.APPBUNDLE_ID }}" "$APPBUNDLE_ID"
 
           mkdir -p /tmp/oazip "${APPBUNDLE_ID}.AppDir/usr/share/"
           wget -qO- "https://downloads.sourceforge.net/project/oarena/openarena-0.8.8.zip" | unzip /dev/stdin -d /tmp/oazip
