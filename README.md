@@ -1,4 +1,4 @@
-# OpenArena
+# OpenARENA
 
 **ID:** io.github.ec_.Quake3e.OpenArena
 
