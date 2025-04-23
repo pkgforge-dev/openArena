@@ -1,7 +1,7 @@
 # OpenArena
 
 <p align="center">
-	<img src=".DirIcon" width="350" alt="OpenArena logo"/>
+	<img src=".DirIcon" width="64" alt="OpenArena logo"/>
 </p>
 
 **ID:** io.github.ec_.Quake3e.OpenArena
