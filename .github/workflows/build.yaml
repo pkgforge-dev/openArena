@@ -80,7 +80,7 @@ jobs:
           wget -qO ./pelf "https://github.com/xplshn/pelf/releases/latest/download/pelf_$(uname -m)"
           chmod +x ./pelf
           ./pelf --add-appdir "${APPBUNDLE_ID}.AppDir" \
-                 --output-to "${APPBUNDLE_ID}.dwfs.AppBundle" \
+                 --output-to "${NAME}.dwfs.AppBundle" \
                  --appbundle-id "${APPBUNDLE_ID}"
 
       - name: OpenArena + Engine
@@ -113,7 +113,7 @@ jobs:
              "${APPBUNDLE_ID}.AppDir"
 
           ./pelf --add-appdir "${APPBUNDLE_ID}.AppDir" \
-                 --output-to "${APPBUNDLE_ID}.dwfs.AppBundle" \
+                 --output-to "${NAME}.dwfs.AppBundle" \
                  --appbundle-id "${APPBUNDLE_ID}" \
                  --run-behavior 2
 
