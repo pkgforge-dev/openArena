@@ -6,7 +6,7 @@
 
 **ID:** io.github.ec_.Quake3e.OpenArena
 
-**Metadata License:** CC0-1.0
+**Metadata License:** ISC, RABRMS
 
 **Project License:** GPL-2.0+ (sadly)
 
