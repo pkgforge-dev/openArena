@@ -46,6 +46,7 @@ jobs:
                SDL_VIDEODRIVER=wayland                    \
                DEFAULT_BASEDIR="."
           echo "DATE=$(date +%d_%m_%Y)" >> $GITHUB_ENV
+          echo "VERSION="$(git rev-parse --short HEAD)"" >> $GITHUB_ENV
 
       - name: Set release tag
         id: set_tag
@@ -57,8 +58,7 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           NAME="quake3e"
-          MAINTAINER="xplshn"
-          APPBUNDLE_ID="${NAME}-${{ env.DATE }}-${MAINTAINER}"
+          APPBUNDLE_ID="${NAME}#github.com/$GITHUB_REPOSITORY:${{ env.VERSION }}-${{ env.DATE }}"
 
           echo "APPBUNDLE_ID=$APPBUNDLE_ID" >> $GITHUB_ENV
 
@@ -88,8 +88,7 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           NAME="openarena-quake3e"
-          MAINTAINER="xplshn"
-          APPBUNDLE_ID="${NAME}-${{ env.DATE }}-${MAINTAINER}"
+          APPBUNDLE_ID="${NAME}#github.com/$GITHUB_REPOSITORY:${{ env.VERSION }}-${{ env.DATE }}"
 
           mv "${{ env.APPBUNDLE_ID }}.AppDir" "${APPBUNDLE_ID}.AppDir"
 
