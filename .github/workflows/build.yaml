@@ -58,8 +58,8 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           NAME="quake3e"
-          APPBUNDLE_ID="${NAME}#github.com/$GITHUB_REPOSITORY:${{ env.VERSION }}-${{ env.DATE }}"
-
+          REPO="$(echo "github.com/$GITHUB_REPOSITORY" | tr '/' '.' | tr '[:upper:]' '[:lower:]')"
+          APPBUNDLE_ID="${NAME}#${REPO}:${{ env.VERSION }}-${{ env.DATE }}"
           echo "APPBUNDLE_ID=$APPBUNDLE_ID" >> $GITHUB_ENV
 
           mkdir -p "${APPBUNDLE_ID}.AppDir/usr/share"
