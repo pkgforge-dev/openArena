@@ -58,8 +58,8 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           NAME="quake3e"
-          REPO="$(echo "github.com/$GITHUB_REPOSITORY" | tr '/' '.' | tr '[:upper:]' '[:lower:]')"
-          APPBUNDLE_ID="${NAME}#${REPO}:${{ env.VERSION }}-${{ env.DATE }}"
+          REPO="github.com/$GITHUB_REPOSITORY"
+          APPBUNDLE_ID="$(echo "${NAME}#${REPO}:${{ env.VERSION }}-${{ env.DATE }}" | tr '/' '.' | tr '[:upper:]' '[:lower:]')"
           echo "APPBUNDLE_ID=$APPBUNDLE_ID" >> $GITHUB_ENV
 
           mkdir -p "${APPBUNDLE_ID}.AppDir/usr/share"
@@ -88,7 +88,8 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           NAME="openarena-quake3e"
-          APPBUNDLE_ID="${NAME}#github.com/$GITHUB_REPOSITORY:${{ env.VERSION }}-${{ env.DATE }}"
+          REPO="github.com/$GITHUB_REPOSITORY"
+          APPBUNDLE_ID="$(echo "${NAME}#${REPO}:${{ env.VERSION }}-${{ env.DATE }}" | tr '/' '.' | tr '[:upper:]' '[:lower:]')"
 
           mv "${{ env.APPBUNDLE_ID }}.AppDir" "${APPBUNDLE_ID}.AppDir"
 
