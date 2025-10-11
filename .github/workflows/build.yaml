@@ -140,7 +140,7 @@ jobs:
           name: appbundles
 
       - name: Create Release
-        uses: softprops/action-gh-release@v2.4.0
+        uses: softprops/action-gh-release@v2.4.1
         with:
           name: "Build ${{ needs.build.outputs.release_tag || github.run_number }}"
           tag_name: "${{ needs.build.outputs.release_tag || github.run_number }}"
